@@ -36,51 +36,60 @@ export const Panel = styled.div`
 
 export const Column = styled.div``;
 
-export const Section = styled.div`
-  border-top: 1px solid var(--color-border);
-  padding: 48px 32px;
+export const Payment = styled.div`
+  border: 1px solid var(--color-border);
+  margin: 15px;
+  border-radius: 8px;
 
   display: flex;
   flex-direction: column;
 
-  > h4 {
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-
-  > div {
+  div {
     display: flex;
+    padding: 32px 16px;
     flex-direction: column;
+    border-bottom: 1px solid var(--color-border);
+    gap: 24px;
 
-    > span + span {
-      margin-top: 16px;
-    }
-
-    .tittle {
-      font-size: 16px;
+    h4 {
+      font-weight: 400;
+      font-size: 18px;
       color: var(--color-black);
     }
 
-    .description {
-      margin-top: 5px;
-      font-size: 14px;
-      color: var(--color-gray);
-      line-height: 19px;
+    h5 {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-black);
     }
-  }
 
-  > a {
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: 600;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+    }
 
-    text-decoration: none;
-    color: var(--color-blue);
+    p {
+      font-size: 14px;
+      color: var(--color-lightgray);
+    }
+
+    span {
+      img {
+        margin-top: 12px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--color-blue);
+    }
   }
 `;
 
 export const Description = styled.div`
-  border-top: 1px solid var(--color-border);
   padding: 44px 32px;
 
   > h2 {

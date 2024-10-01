@@ -5,6 +5,7 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat';
   }
   html {
     min-height: 100%;
@@ -16,7 +17,6 @@ export default createGlobalStyle`
   *, button, input {
     border: 0;
     background: none;
-    font-family: 'Montserrat', -apple-system,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif;
   }
   :root {
     --color-primary: #F5F5F5;

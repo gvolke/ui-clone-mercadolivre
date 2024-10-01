@@ -1,12 +1,8 @@
 import styled, { css } from "styled-components";
-import {
-  HiOutlineLocationMarker,
-  HiOutlineChatAlt2,
-  HiOutlineClock,
-} from "react-icons/hi";
+import { HiOutlineChatAlt2, HiOutlineClock, HiThumbUp } from "react-icons/hi";
 
 export const Container = styled.div`
-  padding: 42px 32px;
+  padding: 32px 16px;
   display: flex;
   flex-direction: column;
 
@@ -15,39 +11,48 @@ export const Container = styled.div`
   border-radius: 8px;
 `;
 
-export const Title = styled.div`
-  font-size: 18px;
-  margin-bottom: 20px;
-  font-weight: 600;
-`;
-
-export const LocationCard = styled.div`
+export const Seller = styled.div`
+  font-size: 20px;
+  margin-bottom: 15px;
   display: flex;
-  align-items: center;
-  padding: 7px 0;
+  flex-direction: column;
+  gap: 5px;
 
-  > div {
-    margin-left: 8px;
+  p {
+    font-size: 12px;
+    color: var(--color-gray);
 
-    > p {
-      font-size: 16px;
-    }
-
-    > strong {
-      font-size: 14px;
-      font-weight: normal;
-      color: var(--color-gray);
+    span {
+      color: var(--color-black);
+      font-weight: 600;
     }
   }
 `;
 
-const iconCSS = css`
-  width: 30px;
-  height: 30px;
+export const SellerStatus = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  > div {
+    margin-right: 5px;
+  }
+
+  .title {
+    color: var(--color-green);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    color: var(--color-gray);
+    font-size: 12px;
+    font-weight: 400;
+  }
 `;
 
-export const LocationIcon = styled(HiOutlineLocationMarker)`
-  ${iconCSS}
+const iconCSS = css`
+  width: 18px;
+  height: 16px;
 `;
 
 export const ReputationCard = styled.div`
@@ -111,27 +116,14 @@ export const ReputationRow = styled.div`
     text-align: center;
 
     > strong {
-      font-size: 24px;
-      font-weight: normal;
+      font-size: 14px;
+      font-weight: 600;
       height: 30px;
     }
 
     > span {
-      font-size: 12px;
-    }
-
-    position: relative;
-
-    & + div {
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 36px;
-        border-left: 1px solid var(--color-border);
-      }
+      font-size: 11px;
+      color: var(--color-lightgray);
     }
   }
 `;
@@ -144,10 +136,27 @@ export const ClockIcon = styled(HiOutlineClock)`
   ${iconCSS}
 `;
 
-export const More = styled.a`
-  margin-top: 24px;
-  color: var(--color-blue);
+export const SellerStatusIcon = styled(HiThumbUp)`
+  width: 16px;
+  height: 16px;
+  color: var(--color-green);
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 14px;
   font-weight: 600;
-  text-decoration: none;
+  padding: 12px 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  height: 35px;
+
+  color: var(--color-blue);
+
+  background: #4189e626;
+
+  cursor: pointer;
 `;

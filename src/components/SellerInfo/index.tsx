@@ -2,30 +2,36 @@ import React from "react";
 
 import {
   Container,
-  Title,
-  LocationCard,
-  LocationIcon,
+  Seller,
+  SellerStatus,
+  SellerStatusIcon,
   ReputationCard,
   ReputationTermometer,
   ReputationRow,
   SupportIcon,
   ClockIcon,
-  More,
+  Button,
 } from "./styles";
 
 const SellerInfo: React.FC = () => {
   return (
     <Container>
-      <Title>Informações sobre o vendedor</Title>
+      <Seller>
+        Vendido por SILKSHIRTS
+        <p>
+          <span>+25</span> produtos
+        </p>
+      </Seller>
 
-      <LocationCard>
-        <LocationIcon />
-
+      <SellerStatus>
         <div>
-          <p>Localização</p>
-          <strong>São Paulo, São Paulo</strong>
+          <SellerStatusIcon />
         </div>
-      </LocationCard>
+        <div>
+          <div className="title">MercadoLíder</div>
+          <div className="subtitle">É um dos melhores do site!</div>
+        </div>
+      </SellerStatus>
 
       <ReputationCard>
         <ReputationTermometer>
@@ -39,26 +45,26 @@ const SellerInfo: React.FC = () => {
         <ReputationRow>
           <div>
             <strong>561</strong>
-            <span>vendas nos últimos 4 meses</span>
+            <span>Vendas concluídas</span>
           </div>
 
           <div>
             <strong>
               <SupportIcon />
             </strong>
-            <span>presta um bom atendimento</span>
+            <span>Oferece um bom atendimento</span>
           </div>
 
           <div>
             <strong>
               <ClockIcon />
             </strong>
-            <span>vendas nos últimos 4 meses</span>
+            <span>Entrega os produtos dentro do prazo</span>
           </div>
         </ReputationRow>
       </ReputationCard>
 
-      <More href="#">Ver mais dados do vendedor</More>
+      <Button> Ver mais produtos do vendedor</Button>
     </Container>
   );
 };

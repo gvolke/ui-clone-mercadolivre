@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  gap: 20px;
   padding: 44px 32px;
+  height: 750px;
+
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const Thumbnails = styled.div`
@@ -29,13 +32,13 @@ export const Thumbnail = styled.img<ThumbnailProps>`
 `;
 
 export const ImageContainer = styled.div`
-  /*Garante que a imagem fique limitada ao container especificado*/
   overflow: hidden;
 `;
 
 export const LargeImage = styled.img`
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
+
   object-fit: contain;
   cursor: zoom-in;
 `;
@@ -53,7 +56,8 @@ export const ZoomWindow = styled.div`
 `;
 
 export const ZoomImage = styled.img`
-  width: 600px; /* Tamanho maior para criar o efeito de zoom */
-  height: 600px;
   position: absolute;
+  width: 800px;
+  height: 800px;
+  object-fit: cover;
 `;

@@ -29,9 +29,24 @@ const ProductViewer: React.FC = () => {
     const target = e.target as HTMLDivElement;
 
     const { left, top, width, height } = target.getBoundingClientRect();
-    const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100;
-    setZoomPosition({ x, y });
+    const x = e.pageX - left - window.pageXOffset;
+    const y = e.pageY - top - window.pageYOffset;
+
+    let positionX = (x / width) * 800 - 182.5; // Ajusta para manter o zoom centrado
+    let positionY = (y / height) * 800 - 200;
+
+    positionX = Math.max(Math.min(positionX, 800 - 400), 0);
+    positionY = Math.max(Math.min(positionY, 800 - 400), 0);
+
+    setZoomPosition({ x: positionX, y: positionY });
+  };
+
+  const handleMouseEnter = () => {
+    setIsZoomVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsZoomVisible(false);
   };
 
   return (
@@ -49,8 +64,8 @@ const ProductViewer: React.FC = () => {
       </Thumbnails>
 
       <ImageContainer
-        onMouseEnter={() => setIsZoomVisible(true)}
-        onMouseLeave={() => setIsZoomVisible(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
       >
         <LargeImage src={selectedImage} alt="Imagem grande do produto" />
@@ -62,7 +77,7 @@ const ProductViewer: React.FC = () => {
             src={selectedImage}
             alt="Zoom do produto"
             style={{
-              transform: `translate(-${zoomPosition.x}%, -${zoomPosition.y}%)`,
+              transform: `translate(-${zoomPosition.x}px, -${zoomPosition.y}px)`,
             }}
           />
         </ZoomWindow>

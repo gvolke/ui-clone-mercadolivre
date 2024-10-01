@@ -3,8 +3,16 @@ import React from "react";
 import SellerInfo from "../SellerInfo";
 import ProductAction from "../ProductAction";
 import ProductViewer from "../ProductViewer";
+import ProductCarousel from "../ProductCarousel";
 
-import { Container, Row, Panel, Column, Section, Description } from "./styles";
+import hypercard from "../../assets/hypercard.svg";
+import mastercard from "../../assets/mastercard.svg";
+import elo from "../../assets/elo.svg";
+import visa from "../../assets/visa.svg";
+import pix from "../../assets/pix.svg";
+import boleto from "../../assets/boleto.svg";
+
+import { Container, Row, Panel, Column, Payment, Description } from "./styles";
 
 const Product: React.FC = () => {
   return (
@@ -18,6 +26,8 @@ const Product: React.FC = () => {
         <Column>
           <ProductViewer />
 
+          <ProductCarousel />
+
           <Info />
         </Column>
 
@@ -25,35 +35,51 @@ const Product: React.FC = () => {
           <ProductAction />
           <SellerInfo />
 
-          <WarrantySection />
-          <WarrantySection />
-          <WarrantySection />
+          <Payment>
+            <div>
+              <h4>Devolução Grátis</h4>
+              <p>
+                Você tem 30 dias a partir do recebimento do produto para
+                devolvê-lo, não importa o motivo!
+              </p>
+              <a href="#">Ver mais sobre devoluções</a>
+            </div>
+
+            <div>
+              <h4>Meios de pagamento</h4>
+
+              <h5>Cartões de crédtio</h5>
+              <ul>
+                <li>
+                  <img src={hypercard} alt="cartão hypercard" />
+                </li>
+                <li>
+                  <img src={elo} alt="cartão elo" />
+                </li>
+                <li>
+                  <img src={visa} alt="cartão visa" />
+                </li>
+                <li>
+                  <img src={mastercard} alt="cartão mastercard" />
+                </li>
+              </ul>
+
+              <span>
+                <h5>Pix</h5>
+                <img src={pix} alt="pix" />
+              </span>
+
+              <span>
+                <h5>Boleto Bancário</h5>
+                <img src={boleto} alt="boleto" />
+              </span>
+
+              <a href="#">Confira outros meios de pagamento</a>
+            </div>
+          </Payment>
         </Column>
       </Panel>
     </Container>
-  );
-};
-
-const WarrantySection = () => {
-  return (
-    <Section>
-      <h4>Garantia</h4>
-
-      <div>
-        <span>
-          <p className="title">Compra garantida com Lorem Ipsum</p>
-          <p className="description">
-            Receba o produto que está esperando ou devolvemos o seu dinheiro
-          </p>
-        </span>
-        <span>
-          <p className="title">Garantia do Vendedor</p>
-          <p className="description">sem garantia</p>
-        </span>
-      </div>
-
-      <a href="#">Saiba mais sobre garantia</a>
-    </Section>
   );
 };
 
