@@ -3,19 +3,24 @@ import blacktshirt from "../../assets/black-tshirt.png";
 import {
   Carousel,
   CarouselButton,
+  Container,
   CarouselContainer,
   CarouselItem,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ProductInfo,
 } from "./styles";
 
 const products = [
-  { id: 1, name: "Produto 1", image: blacktshirt },
-  { id: 2, name: "Produto 2", image: blacktshirt },
-  { id: 3, name: "Produto 3", image: blacktshirt },
-  { id: 4, name: "Produto 4", image: blacktshirt },
-  { id: 5, name: "Produto 5", image: blacktshirt },
-  { id: 6, name: "Produto 6", image: blacktshirt },
-  { id: 7, name: "Produto 7", image: blacktshirt },
-  { id: 8, name: "Produto 8", image: blacktshirt },
+  { id: 1, name: "Produto 1 Camiseta 100% algodão", image: blacktshirt },
+  { id: 2, name: "Produto 2 Camiseta 100% algodão", image: blacktshirt },
+  { id: 3, name: "Produto 3 Camiseta 100% algodão", image: blacktshirt },
+  { id: 4, name: "Produto 4 Camiseta 100% algodão", image: blacktshirt },
+  { id: 5, name: "Produto 5 Camiseta 100% algodão", image: blacktshirt },
+  { id: 6, name: "Produto 6 Camiseta 100% algodão", image: blacktshirt },
+  { id: 7, name: "Produto 7 Camiseta 100% algodão", image: blacktshirt },
+  { id: 8, name: "Produto 8 Camiseta 100% algodão", image: blacktshirt },
+  { id: 9, name: "Produto 9 Camiseta 100% algodão", image: blacktshirt },
 ];
 
 const ProductCarousel: React.FC = () => {
@@ -44,32 +49,56 @@ const ProductCarousel: React.FC = () => {
   console.log(visibleProducts);
 
   return (
-    <CarouselContainer>
-      <CarouselButton
-        className="prev"
-        onClick={handlePrev}
-        disabled={currentPage === 0}
-      >
-        {"<"}
-      </CarouselButton>
+    <Container>
+      <h2>Produtos Relacionados</h2>
 
-      <Carousel>
-        {visibleProducts.map((product) => (
-          <CarouselItem key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <p>{product.name}</p>
-          </CarouselItem>
-        ))}
-      </Carousel>
+      <CarouselContainer>
+        <CarouselButton
+          className="prev"
+          onClick={handlePrev}
+          disabled={currentPage === 0}
+        >
+          <ArrowLeftIcon />
+        </CarouselButton>
 
-      <CarouselButton
-        className="next"
-        onClick={handleNext}
-        disabled={currentPage === totalPages - 1}
-      >
-        {">"}
-      </CarouselButton>
-    </CarouselContainer>
+        <Carousel>
+          {visibleProducts.map((product) => (
+            <CarouselItem key={product.id}>
+              <img src={product.image} alt={product.name} />
+              <Info productname={product.name} />
+            </CarouselItem>
+          ))}
+        </Carousel>
+
+        <CarouselButton
+          className="next"
+          onClick={handleNext}
+          disabled={currentPage === totalPages - 1}
+        >
+          <ArrowRightIcon />
+        </CarouselButton>
+      </CarouselContainer>
+    </Container>
+  );
+};
+
+const Info = ({ productname }: { productname: string }) => {
+  return (
+    <ProductInfo>
+      <div className="old-price">R$ 54,90</div>
+
+      <div className="current-price">
+        R$ 32 <span>99</span> <span>39% OFF</span>
+      </div>
+
+      <div className="parcels">em 12x R$ 3,20</div>
+
+      <div className="shipping">
+        <span>Frete grátis</span> por ser sua primeira compra
+      </div>
+
+      <div className="product">{productname}</div>
+    </ProductInfo>
   );
 };
 
