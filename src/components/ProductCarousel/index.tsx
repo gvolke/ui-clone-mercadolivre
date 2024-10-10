@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from "react";
 import blacktshirt from "../../assets/black-tshirt.png";
 import {
-  Carousel,
-  CarouselButton,
+  Carrousel,
+  CarrouselTrack,
+  CarrouselButton,
   Container,
-  CarouselContainer,
-  CarouselItem,
+  CarrouselContainer,
+  CarrouselItem,
   ArrowLeftIcon,
   ArrowRightIcon,
   ProductInfo,
@@ -25,59 +26,60 @@ const products = [
 
 const ProductCarousel: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 3; // Número de produtos visíveis por vez
+  const itemsPerPage = 3; // Número de produtos visíveis por página do carrossel
 
-  const totalPages = Math.ceil(products.length / itemsPerPage); // Total de páginas
+  const totalPages = Math.ceil(products.length / itemsPerPage); // Total de páginas. Ceil retorna o menor número inteiro maior ou igual ao resultado. Por exemplo, se fosse 10 produtos divididos em 3 páginas o resultado seria 3,333. A função ceil vai retornar 4.
 
   const handleNext = useCallback(() => {
+    // Se a página atual for menor que a última vai para a próxima
     if (currentPage < totalPages - 1) {
       setCurrentPage(currentPage + 1);
     }
   }, [currentPage, totalPages]);
 
   const handlePrev = useCallback(() => {
+    // Se a página atual não for a primeira volta para a anterior
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
   }, [currentPage]);
 
-  // Cálculo para exibir produtos atuais no carrossel
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = Math.min(startIndex + itemsPerPage, products.length); // Garante que não ultrapasse o número de produtos
-  console.log("start index: " + startIndex + " end index: " + endIndex);
-  const visibleProducts = products.slice(startIndex, endIndex); // Retorna os produtos visíveis
-  console.log(visibleProducts);
-
   return (
     <Container>
       <h2>Produtos Relacionados</h2>
 
-      <CarouselContainer>
-        <CarouselButton
+      <CarrouselContainer>
+        <CarrouselButton
           className="prev"
           onClick={handlePrev}
           disabled={currentPage === 0}
         >
           <ArrowLeftIcon />
-        </CarouselButton>
+        </CarrouselButton>
 
-        <Carousel>
-          {visibleProducts.map((product) => (
-            <CarouselItem key={product.id}>
-              <img src={product.image} alt={product.name} />
-              <Info productname={product.name} />
-            </CarouselItem>
-          ))}
-        </Carousel>
+        <Carrousel>
+          <CarrouselTrack
+            currentPage={currentPage}
+            itemsPerPage={itemsPerPage}
+            totalItems={products.length}
+          >
+            {products.map((product) => (
+              <CarrouselItem key={product.id}>
+                <img src={product.image} alt={product.name} />
+                <Info productname={product.name} />
+              </CarrouselItem>
+            ))}
+          </CarrouselTrack>
+        </Carrousel>
 
-        <CarouselButton
+        <CarrouselButton
           className="next"
           onClick={handleNext}
           disabled={currentPage === totalPages - 1}
         >
           <ArrowRightIcon />
-        </CarouselButton>
-      </CarouselContainer>
+        </CarrouselButton>
+      </CarrouselContainer>
     </Container>
   );
 };

@@ -4,6 +4,7 @@ import SellerInfo from "../SellerInfo";
 import ProductAction from "../ProductAction";
 import ProductViewer from "../ProductViewer";
 import ProductCarousel from "../ProductCarousel";
+import ProductFeatures from "../ProductFeatures";
 
 import hypercard from "../../assets/hypercard.svg";
 import mastercard from "../../assets/mastercard.svg";
@@ -22,12 +23,20 @@ const Product: React.FC = () => {
         <a href="#">Vender um Igual</a>
       </Row>
 
+      {/* Aqui tem o componente principal, a maioria das coisas que aparecem nele foi feita em outros components que são importados daqui.
+          Nesse componente Panel foi utilizado um grid layout (pode ser visto nos estilos) pois o layout é claramente dividido em duas colunas
+      */}
       <Panel>
         <Column>
           <ProductViewer />
 
           <ProductCarousel />
 
+          <ProductFeatures />
+
+          {/* Como tem várias coisas dentro dessa seção de info (header, paragrafo) foi criado um componente nessa tela mesmo pra ficar mais clean e não
+              ficar aparecendo todo o texto aqui. Facilita a visualização e a compreensão do que está em tela. Poderia ter sido criado em um componente a parte tambem
+          */}
           <Info />
         </Column>
 
@@ -35,51 +44,58 @@ const Product: React.FC = () => {
           <ProductAction />
           <SellerInfo />
 
-          <Payment>
-            <div>
-              <h4>Devolução Grátis</h4>
-              <p>
-                Você tem 30 dias a partir do recebimento do produto para
-                devolvê-lo, não importa o motivo!
-              </p>
-              <a href="#">Ver mais sobre devoluções</a>
-            </div>
-
-            <div>
-              <h4>Meios de pagamento</h4>
-
-              <h5>Cartões de crédtio</h5>
-              <ul>
-                <li>
-                  <img src={hypercard} alt="cartão hypercard" />
-                </li>
-                <li>
-                  <img src={elo} alt="cartão elo" />
-                </li>
-                <li>
-                  <img src={visa} alt="cartão visa" />
-                </li>
-                <li>
-                  <img src={mastercard} alt="cartão mastercard" />
-                </li>
-              </ul>
-
-              <span>
-                <h5>Pix</h5>
-                <img src={pix} alt="pix" />
-              </span>
-
-              <span>
-                <h5>Boleto Bancário</h5>
-                <img src={boleto} alt="boleto" />
-              </span>
-
-              <a href="#">Confira outros meios de pagamento</a>
-            </div>
-          </Payment>
+          {/* Mesma lógica da seção de info */}
+          <PaymentInfo />
         </Column>
       </Panel>
     </Container>
+  );
+};
+
+const PaymentInfo = () => {
+  return (
+    <Payment>
+      <div>
+        <h4>Devolução Grátis</h4>
+        <p>
+          Você tem 30 dias a partir do recebimento do produto para devolvê-lo,
+          não importa o motivo!
+        </p>
+        <a href="#">Ver mais sobre devoluções</a>
+      </div>
+
+      <div>
+        <h4>Meios de pagamento</h4>
+
+        <h5>Cartões de crédtio</h5>
+        <ul>
+          <li>
+            <img src={hypercard} alt="cartão hypercard" />
+          </li>
+          <li>
+            <img src={elo} alt="cartão elo" />
+          </li>
+          <li>
+            <img src={visa} alt="cartão visa" />
+          </li>
+          <li>
+            <img src={mastercard} alt="cartão mastercard" />
+          </li>
+        </ul>
+
+        <span>
+          <h5>Pix</h5>
+          <img src={pix} alt="pix" />
+        </span>
+
+        <span>
+          <h5>Boleto Bancário</h5>
+          <img src={boleto} alt="boleto" />
+        </span>
+
+        <a href="#">Confira outros meios de pagamento</a>
+      </div>
+    </Payment>
   );
 };
 

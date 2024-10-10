@@ -50,7 +50,7 @@ export const ZoomWindow = styled.div`
   margin-left: 777px;
   margin-top: -30px;
   overflow: hidden;
-  z-index: 10; /* Certifique-se de que a janela de zoom fique sobre os outros componentes */
+  z-index: 10; /* Janela de zoom fique sobre os outros componentes */
   position: absolute;
   border: 1px solid var(--color-border);
 `;

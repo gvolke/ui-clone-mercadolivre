@@ -30,6 +30,7 @@ export const Panel = styled.div`
   background-color: var(--color-white);
   box-shadow: var(--panel-shadow);
 
+  /* Definição do display em grid, demonstrando que a primeira coluna vai ocupar uma fração de 67 do espaço disponível e a segunda vai ficar com o restante: 33 */
   display: grid;
   grid-template-columns: 67fr 33fr;
 `;
@@ -90,7 +91,10 @@ export const Payment = styled.div`
 `;
 
 export const Description = styled.div`
-  padding: 44px 32px;
+  margin: 0px 15px 0px 30px;
+  border-top: 1px solid var(--color-border);
+
+  padding: 40px 0px 30px 0px;
 
   > h2 {
     font-size: 24px;

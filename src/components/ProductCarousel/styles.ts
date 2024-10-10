@@ -1,6 +1,12 @@
 import styled, { css } from "styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
+interface CarrouselProps {
+  currentPage: number;
+  itemsPerPage: number;
+  totalItems: number;
+}
+
 const iconStyles = css`
   width: 32px;
   height: 32px;
@@ -28,7 +34,7 @@ export const Container = styled.div`
   }
 `;
 
-export const CarouselContainer = styled.div`
+export const CarrouselContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,19 +46,35 @@ export const CarouselContainer = styled.div`
   }
 `;
 
-export const Carousel = styled.div`
+export const Carrousel = styled.div`
   display: flex;
-  overflow: hidden;
+  overflow: hidden; /* Esconder produtos que estão fora da área visível, que é manipulada pelo transform no eixo X */
   width: 100%;
-
   margin-top: 40px;
+  position: relative;
 `;
 
-export const CarouselItem = styled.div`
+export const CarrouselTrack = styled.div<CarrouselProps>`
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Animação de deslizar */
+  transform: ${(props) =>
+    `translateX(-${
+      props.currentPage * 100
+    }%)`}; /* Mover os itens com base na página atual. Mexe no eixo X 100 multiplicado pela página atual. Esse 100 representa 100% da página atual do carrossel. É como se fosse deixar 100% da track para fora do eixo X*/
+  width: ${(props) =>
+    `${
+      props.totalItems * (100 / props.itemsPerPage)
+    }%`}; /* Ajustar a largura total da track do carrossel com base no número de itens, para que apareça os itemsPerPage especificados em cada página. 100 representa novamente a largura total do container, divindo ela pelos itens por página e multiplicando pelo total da pra saber a largura que a track tem que ter */
+`;
+
+export const CarrouselItem = styled.div`
   cursor: pointer;
+  width: 50px;
   border-radius: 6px;
   border: 1px solid var(--color-border);
-  min-width: calc(33.333% - 20px);
+  min-width: calc(
+    33.333% - 20px
+  ); /*Cálculo da lágura mínima como são 3 itens por página 33.33% e desconta os 20px de margin (10px da esquerda e 10px da direita)*/
   text-align: center;
   margin: 0 10px 10px 10px;
 
@@ -69,7 +91,7 @@ export const CarouselItem = styled.div`
   }
 `;
 
-export const CarouselButton = styled.button`
+export const CarrouselButton = styled.button`
   border-radius: 50%;
   width: 64px;
   height: 64px;
@@ -90,6 +112,7 @@ export const CarouselButton = styled.button`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
   }
 
+  /*Se o número de páginas for igual à página atual é passada a propriedade disabled como true, para fazer o botão de passar a página do carrossel sumir*/
   &:disabled {
     visibility: collapse;
   }
