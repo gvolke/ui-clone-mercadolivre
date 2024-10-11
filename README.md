@@ -1,44 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center"> UI Clone Mercado Livre</h1>
 
-## Available Scripts
+<p align="center">
+  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#executar">Como Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#imagens">Imagens</a>&nbsp;&nbsp;&nbsp;
+</p>
 
-In the project directory, you can run:
+<br>
 
-### `yarn start`
+# Tecnologias
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- React JS
+- Typescript
+- Styled Components
+- Git e Github
 
-### `yarn test`
+# Projeto
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Projeto desenvolvido para estudo de interfaces de usuário em sites de compras online. Neste trabalho, utilizei como referência o layout do site Mercado Livre, buscando recriar alguns dos elementos principais, como a funcionalidade de zoom em imagens de produtos, o carrossel de itens e a organização geral dos componentes na tela, mas utilizando minhas próprias palavras e abordagens para explorar diferentes conceitos de design e usabilidade. Esse projeto não foi pensado para responsividade.
 
-### `yarn build`
+# Executar
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  # Instalar as dependências:
+  $ yarn
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  # Iniciar a aplicação:
+  $ yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Imagens
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <img alt="Product Viewer" src=".github/ProductViewer.png" style="margin: 5px;">
+</div>
